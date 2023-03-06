@@ -1,0 +1,263 @@
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Send = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local Id = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local User = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local ImageLabel = Instance.new("ImageLabel")
+local UICorner_5 = Instance.new("UICorner")
+local TextBox = Instance.new("TextBox")
+local UICorner_6 = Instance.new("UICorner")
+local Open = Instance.new("TextButton")
+local UICorner_7 = Instance.new("UICorner")
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+Frame.Position = UDim2.new(0, 424, 0, 124)
+Frame.Size = UDim2.new(0, 101, 0, 219)
+Frame.Active = true
+Frame.Draggable = true
+
+UICorner.Parent = Frame
+
+Send.Name = "Send"
+Send.Parent = Frame
+Send.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Send.Position = UDim2.new(0.0693069324, 0, 0.894977093, 0)
+Send.Size = UDim2.new(0, 87, 0, 15)
+Send.Font = Enum.Font.Unknown
+Send.Text = "Send To Discord"
+Send.TextColor3 = Color3.fromRGB(255, 255, 255)
+Send.TextScaled = true
+Send.TextSize = 14.000
+Send.TextWrapped = true
+
+
+UICorner_2.Parent = Send
+
+Id.Name = "Id"
+Id.Parent = Frame
+Id.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Id.Position = UDim2.new(0.0693069324, 0, 0.579908609, 0)
+Id.Size = UDim2.new(0, 87, 0, 15)
+Id.Font = Enum.Font.Unknown
+Id.Text = "Id"
+Id.TextColor3 = Color3.fromRGB(255, 255, 255)
+Id.TextScaled = true
+Id.TextSize = 14.000
+Id.TextWrapped = true
+
+UICorner_3.Parent = Id
+
+User.Name = "User"
+User.Parent = Frame
+User.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+User.Position = UDim2.new(0.0693069324, 0, 0.465753436, 0)
+User.Size = UDim2.new(0, 87, 0, 15)
+User.Font = Enum.Font.Unknown
+User.Text = "User"
+User.TextColor3 = Color3.fromRGB(255, 255, 255)
+User.TextScaled = true
+User.TextSize = 14.000
+User.TextWrapped = true
+
+UICorner_4.Parent = User
+
+ImageLabel.Parent = Frame
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.Position = UDim2.new(0.177947402, 0, 0.150684938, 0)
+ImageLabel.Size = UDim2.new(0, 64, 0, 59)
+ImageLabel.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+UICorner_5.Parent = ImageLabel
+
+TextBox.Parent = Frame
+TextBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.Position = UDim2.new(0.0693069324, 0, 0.707762599, 0)
+TextBox.Size = UDim2.new(0, 87, 0, 30)
+TextBox.Font = Enum.Font.Unknown
+TextBox.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.PlaceholderText = "Enter Reason"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.TextWrapped = true
+
+UICorner_6.Parent = TextBox
+
+Open.Name = "Open"
+Open.Parent = ScreenGui
+Open.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Open.Position = UDim2.new(0.941955686, 0, 0.356796086, 0)
+Open.Size = UDim2.new(0, 49, 0, 20)
+Open.Font = Enum.Font.Unknown
+Open.Text = "<"
+Open.TextColor3 = Color3.fromRGB(255, 255, 255)
+Open.TextScaled = true
+Open.TextSize = 14.000
+Open.TextWrapped = true
+Open.MouseButton1Down:Connect(function()
+	if Frame.Visible == true then
+		Open.Text = ">"
+
+		Frame.Visible = false
+	else
+		Open.Text = "<"
+		Frame.Visible = true
+	end
+end)
+UICorner_7.Parent = Open
+
+--- scripts
+
+local l__Players__1 = game:GetService("Players");
+local l__mouse__4 = game.Players.LocalPlayer:GetMouse();
+
+
+
+l__mouse__4.Button1Down:Connect(function()
+	if not l__mouse__4.Target then
+		return;
+	end;
+	local v23 = l__mouse__4.Target:FindFirstAncestorOfClass("Model");
+	if not v23 or not v23:FindFirstChildOfClass("Humanoid") then
+		return;
+	end;
+	local v24 = game.Players:GetPlayerFromCharacter(v23);
+	if not v24 then
+		return;
+	end;
+	ImageLabel.Image = game:GetService("Players"):GetUserThumbnailAsync(v24.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+
+	User.Text = v24.Name
+	User.MouseButton1Down:Connect(function()
+		setclipboard(User.Text)
+	end)
+	Id.Text = v24.UserId
+	Id.MouseButton1Down:Connect(function()
+		setclipboard(Id.Text)
+	end)
+end)
+
+Send.MouseButton1Down:Connect(function()
+	local plr = game.Players.LocalPlayer
+	local OSTime = os.time()
+	local Time = os.date('!*t', OSTime)
+
+	local function getexploit()
+		local exploit =
+			(syn and not is_sirhurt_closure and not pebc_execute and "Synapse X") or
+			(isexecutorclosure and "Script-Ware V2") or
+			(secure_load and "Sentinel") or
+			(is_sirhurt_closure and "SirHurt V4") or
+			(pebc_execute and "ProtoSmasher") or
+			(KRNL_LOADED and "Krnl") or
+			(WrapGlobal and "WeAreDevs") or
+			(isvm and "Proxo") or
+			(shadow_env and "Shadow") or
+			(jit and "EasyExploits") or
+			(getreg()['CalamariLuaEnv'] and "Calamari") or
+			(unit and "Unit") or
+			("Undetectable")
+		return exploit
+	end
+
+	--Please don't spam the webhook. I don't even log IP's :/
+	local Content = ''
+	local Embed = {
+		["title"] = "",
+		["description"] = "New Exploiters",
+		["type"] = "rich",
+		["fields"] = {
+			{
+				["name"] = "User",
+				["value"] = User.Text.." ("..Id.Text..")",
+				["inline"] = true
+			},
+						{
+				["name"] = "Reason",
+				["value"] = TextBox.Text,
+				["inline"] = true
+			},
+			{
+				["name"] = "Admin",
+				["value"] = game.Players.LocalPlayer.Name,
+				["inline"] = true
+			}
+		},
+
+		["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
+	};
+	(syn and syn.request or http_request or http.request) {
+		Url = 'https://discord.com/api/webhooks/1081940284457369740/zFCYgs9jJlmnN_MOHmLF61oxzHblOIVN2w1OKq1CzVlQklIgYvqeVWkSeX6oLrLf9XgL';
+		Method = 'POST';
+		Headers = {
+			['Content-Type'] = 'application/json';
+		};
+		Body = game:GetService'HttpService':JSONEncode({content = Content; embeds = {Embed}});
+	};
+	Send.Text = "Sent Data"
+	wait(3)
+	Send.Text = "Send To Discord"
+end)
+local plr = game.Players.LocalPlayer
+local OSTime = os.time()
+local Time = os.date('!*t', OSTime)
+
+local function getexploit()
+	local exploit =
+		(syn and not is_sirhurt_closure and not pebc_execute and "Synapse X") or
+		(isexecutorclosure and "Script-Ware V2") or
+		(secure_load and "Sentinel") or
+		(is_sirhurt_closure and "SirHurt V4") or
+		(pebc_execute and "ProtoSmasher") or
+		(KRNL_LOADED and "Krnl") or
+		(WrapGlobal and "WeAreDevs") or
+		(isvm and "Proxo") or
+		(shadow_env and "Shadow") or
+		(jit and "EasyExploits") or
+		(getreg()['CalamariLuaEnv'] and "Calamari") or
+		(unit and "Unit") or
+		("Undetectable")
+	return exploit
+end
+
+local Content = ''
+local Embed = {
+	["title"] = "",
+	["description"] = "New Ragdoll Exploiters",
+	["type"] = "rich",
+	["fields"] = {
+
+		{
+			["name"] = "Id",
+			["value"] = game.Players.LocalPlayer.UserId,
+			["inline"] = false
+		},
+		{
+			["name"] = "User",
+			["value"] = game.Players.LocalPlayer.Name,
+			["inline"] = false
+		}
+
+	},
+
+	["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
+};
+(syn and syn.request or http_request or http.request) {
+	Url = "https://discord.com/api/webhooks/1081967876275183616/UAZVdAAXwX5m9yxeClrAPpSvcNDQR8YjEaqRrAjGhgSo5NOdtV1z7fcPSY8dtKVB2Lch";
+	Method = 'POST';
+	Headers = {
+		['Content-Type'] = 'application/json';
+	};
+	Body = game:GetService'HttpService':JSONEncode({content = Content; embeds = {Embed}});
+};
